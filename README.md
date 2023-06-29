@@ -1,2 +1,2 @@
 # Go Examples
-quickly use some tech
+quickly starting some tech, such as mysql, redis, and kafka
