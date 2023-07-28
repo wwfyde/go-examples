@@ -11,6 +11,7 @@ import (
 
 // path "/" handler
 func helloHandler(w http.ResponseWriter, r *http.Request) {
+	// Parse Request header
 	header := r.Header
 	jsonData, _ := json.MarshalIndent(header, "", "    ")
 	fmt.Printf("%s\n", jsonData)

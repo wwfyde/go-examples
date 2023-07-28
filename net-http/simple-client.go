@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	// create http request and get http response
 	resp, err := http.Get("http://localhost:8000")
 	if err != nil {
 		panic("err")
