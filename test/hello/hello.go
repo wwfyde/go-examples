@@ -2,7 +2,7 @@ package hello
 
 import "fmt"
 
-func hello(in string) string {
-	c := fmt.Sprintf("hello, %s!", in)
+func Hello(in string) string {
+	c := fmt.Sprintf("Hello, %s!", in)
 	return c
 }

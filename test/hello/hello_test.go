@@ -7,15 +7,15 @@ func Test_hello(t *testing.T) {
 	testCases := []struct {
 		name, in, want string
 	}{
-		{"empty", "", "hello, !"},
-		{"世界", "世界", "hello, 世界!"},
-		{"world", "world", "hello, world!"},
-		{"mixed", "某 and some", "hello, 某 and some!"},
+		{"empty", "", "Hello, !"},
+		{"世界", "世界", "Hello, 世界!"},
+		{"world", "world", "Hello, world!"},
+		{"mixed", "某 and some", "Hello, 某 and some!"},
 	}
 	for _, tt := range testCases {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := hello(tt.in); got != tt.want {
-				t.Errorf("hello = %s, want: %s", got, tt.want)
+			if got := Hello(tt.in); got != tt.want {
+				t.Errorf("Hello = %s, want: %s", got, tt.want)
 			}
 		})
 	}
