@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/bson"
@@ -41,7 +42,7 @@ func main() {
 	log.Printf("%+v\n", err)
 
 	if err != nil {
-		if err == mongo.ErrNoDocuments {
+		if errors.Is(err, mongo.ErrNoDocuments) {
 			log.Println("No Documents: ", err)
 			return
 		}
@@ -49,8 +50,46 @@ func main() {
 
 	filter := bson.D{{"name", "hello"}}
 	var result Message
-	coll.FindOne(ctx, filter).Decode(&result)
+	err = coll.FindOne(ctx, filter).Decode(&result)
+	if err != nil {
+		log.Fatal("Decode Error: ", err)
+	}
 	fmt.Printf("%+v", result)
 	// TODO InsertOne InsertMany
+
+	res, err := coll.InsertMany(
+		ctx, []any{
+			bson.D{
+				{"item", "canvas"},
+				{"qty", int32(100)},
+				{"tags", bson.A{"cotton"}},
+				{"size", bson.D{
+					{"h", 28},
+					{"w", 35.5},
+					{"uom", "cm"},
+				}},
+			},
+			bson.D{
+				{"item", "mat"},
+				{"qty", int32(25)},
+				{"tags", bson.A{"gray"}},
+				{"size", bson.D{
+					{"h", 27.9},
+					{"w", 35.5},
+					{"uom", "cm"},
+				}},
+			},
+			bson.D{
+				{"item", "mousepad"},
+				{"qty", 25},
+				{"tags", bson.A{"gel", "blue"}},
+				{"size", bson.D{
+					{"h", 19},
+					{"w", 22.85},
+					{"uom", "cm"},
+				}},
+			},
+		})
+	fmt.Printf("inserted documents with IDs:%v\n", res.InsertedIDs)
 
 }

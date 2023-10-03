@@ -45,4 +45,7 @@ Cobra 构建在命令, 参数和标记的结构之上.
 flag的功能性有pflag库提供, pflag 是flag标准库的一个分叉, pflag维护了相同的接口但
 增加了对POSIX的兼容.
 
+## 参考项目
+
+- [GitHub’s official command line tool](https://github.com/cli/cli)
 

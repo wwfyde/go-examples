@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/google/uuid"
 	"github.com/spf13/cobra"
+	"log"
 )
 
 func main() {
@@ -19,5 +20,5 @@ func main() {
 	}
 	var rootCmd = &cobra.Command{Use: "app"}
 	rootCmd.AddCommand(cmdPrint)
-	rootCmd.Execute()
+	log.Fatal(rootCmd.Execute())
 }
