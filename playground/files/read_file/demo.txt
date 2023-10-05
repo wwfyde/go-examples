@@ -1,0 +1,2 @@
+hello, 世界!
+I want to be a senior gopher!

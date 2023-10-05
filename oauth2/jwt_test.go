@@ -17,5 +17,6 @@ func main() {
 		RedirectURL: "",
 		Scopes:      nil,
 	}
+	_, _ = ctx, conf
 
 }

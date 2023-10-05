@@ -1,0 +1,26 @@
+package main
+
+import "testing"
+
+func TestEcho(t *testing.T) {
+	type Args struct {
+		newline bool
+		sep     string
+		args    []string
+	}
+	tests := []struct {
+		name    string
+		args    Args
+		wantErr bool
+	}{
+		// TODO: Add test cases.
+		{name: "a", args: Args{sep: "/t", newline: true, args: []string{"A", "b", "c"}}, wantErr: true},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if err := Echo(tt.args.newline, tt.args.sep, tt.args.args); (err != nil) != tt.wantErr {
+				t.Errorf("Echo() error = %v, wantErr %v", err, tt.wantErr)
+			}
+		})
+	}
+}

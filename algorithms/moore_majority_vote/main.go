@@ -1,5 +1,9 @@
 package main
 
+type T interface {
+	~int | ~float64
+}
+
 func main() {
 	println(MajorityElements([]int{2, 2, 1, 1, 1, 3, 4}))
 }
